@@ -1,113 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Malla Interactiva - Karla & Carlos 💜</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #FFF0F5, #FFFACD);
-      margin: 0; padding: 2rem;
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    h1 {
-      color: #800080;
-      margin-bottom: 2rem;
-      font-weight: 700;
-      user-select: none;
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-    }
-    #contenedor {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px;
-      width: 100%;
-      max-width: 1200px;
-      margin-bottom: 3rem;
-    }
-    .anio-title {
-      grid-column: 1 / -1;
-      font-size: 2rem;
-      color: #4B0082;
-      margin-bottom: 1rem;
-      border-left: 6px solid #800080;
-      padding-left: 1rem;
-      font-weight: 700;
-      user-select: none;
-      margin-top: 3rem;
-    }
-    .materia {
-      background-color: #FFFF99; /* Canario */
-      border: 2px solid #808000; /* Verde Olivo */
-      border-radius: 18px;
-      cursor: pointer;
-      height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #333;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-      position: relative;
-      user-select: none;
-      padding: 1rem;
-      line-height: 1.2;
-    }
-    .materia:hover:not(.bloqueada) {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px 5px #800080aa;
-      background-color: #FFF8B5;
-    }
-    .materia.bloqueada {
-      background-color: #E0B0FF; /* Malva */
-      border-color: #D3C0E8;
-      color: #999;
-      cursor: default;
-      box-shadow: none;
-      transform: none !important;
-    }
-    .materia.aprobada {
-      background-color: #F9A602; /* Narciso */
-      border-color: #800080; /* Púrpura */
-      color: #3a1a00;
-      box-shadow: 0 0 18px 5px #F9A602cc;
-      font-weight: 700;
-    }
-    .gatito {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      font-size: 2rem;
-      pointer-events: none;
-      user-select: none;
-      font-weight: 900;
-      color: #800080;
-      text-shadow:
-        -1px -1px 0 #fff,
-         1px -1px 0 #fff,
-        -1px  1px 0 #fff,
-         1px  1px 0 #fff;
-    }
-    .mensaje {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #800080;
-      min-height: 60px;
-      max-width: 700px;
-      text-align: center;
-      user-select: none;
-      padding: 0 1rem;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Malla Interactiva - Karla & Carlos 💜</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #FFF0F5, #FFFACD);
+    margin: 0; padding: 2rem;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    color: #800080; /* Púrpura */
+    margin-bottom: 2rem;
+    font-weight: 700;
+    user-select: none;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+  }
+  #contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 3rem;
+  }
+  .anio-title {
+    grid-column: 1 / -1;
+    font-size: 2rem;
+    color: #800080; /* Púrpura */
+    margin-bottom: 1rem;
+    border-left: 6px solid #800080;
+    padding-left: 1rem;
+    font-weight: 700;
+    user-select: none;
+    margin-top: 3rem;
+  }
+  .materia {
+    border-radius: 18px;
+    cursor: pointer;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    user-select: none;
+    padding: 1rem;
+    line-height: 1.2;
+  }
+  .materia:hover:not(.bloqueada) {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 5px #800080aa;
+  }
+  /* Estado bloqueada */
+  .materia.bloqueada {
+    background-color: #E0B0FF; /* Malva */
+    border: 2px solid #D3C0E8;
+    color: #999;
+    cursor: default;
+    box-shadow: none;
+    transform: none !important;
+  }
+  /* Estado disponible pero no aprobada */
+  .materia.disponible {
+    background-color: #FFFF99; /* Canario */
+    border: 2px solid #808000; /* Verde Olivo */
+    color: #333;
+  }
+  /* Estado aprobada */
+  .materia.aprobada {
+    background-color: #F9A602; /* Narciso */
+    border: 2px solid #800080; /* Púrpura */
+    color: #3a1a00;
+    box-shadow: 0 0 18px 5px #F9A602cc;
+    font-weight: 700;
+  }
+  .gatito {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 2rem;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 900;
+    color: #800080;
+    text-shadow:
+      -1px -1px 0 #fff,
+      1px -1px 0 #fff,
+      -1px 1px 0 #fff,
+      1px 1px 0 #fff;
+  }
+  .mensaje {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #800080;
+    min-height: 60px;
+    max-width: 700px;
+    text-align: center;
+    user-select: none;
+    padding: 0 1rem;
+    margin-top: -1rem;
+  }
+</style>
 </head>
 <body>
   <h1>Malla Interactiva - Karla & Carlos 💜</h1>
@@ -115,8 +121,10 @@
   <div class="mensaje" id="mensaje"></div>
 
   <script>
+    // Definición de materias con todos los semestres y nivelación
     const materias = [
       { nombre: "Nivelación", requisitos: [], anio: "Nivelación" },
+
       { nombre: "Proyectual 1", requisitos: ["Nivelación"], anio: "1er Semestre" },
       { nombre: "Proyectual 2", requisitos: ["Proyectual 1"], anio: "1er Semestre" },
       { nombre: "Dibujo", requisitos: ["Nivelación"], anio: "1er Semestre" },
@@ -169,6 +177,7 @@
     const mensaje = document.getElementById("mensaje");
     let aprobadas = JSON.parse(localStorage.getItem("materiasAprobadas") || "[]");
 
+    // Frases bonitas al aprobar
     const frasesAprobadas = [
       "🐱 ¡Lo hiciste bien, mi amor Carlos! 😽",
       "😻 Carlos, eres un campeón. ¡Sigue así!",
@@ -182,6 +191,7 @@
       "💖 ¡Orgullo total, mi amor Carlos!",
     ];
 
+    // Frases tristes si desaprueba
     const frasesDesaprobadas = [
       "😿 No hay coito, Carlos… inténtalo de nuevo :c",
       "💔 Ups, esta no salió bien. ¡Vamos que tú puedes!",
@@ -198,20 +208,30 @@
       "🌱 Cada intento te hace más fuerte, amor.",
     ];
 
-    function puedeMostrarse(m) {
-      return m.requisitos.every(req => aprobadas.includes(req));
+    // Verifica si se pueden mostrar (si cumple requisitos)
+    function puedeMostrarse(materia) {
+      // Sin requisitos: siempre visible
+      if (materia.requisitos.length === 0) return true;
+      // Si tiene todos los requisitos aprobados
+      return materia.requisitos.every(r => aprobadas.includes(r));
     }
 
+    // Devuelve frase random
     function fraseAleatoria(array) {
       return array[Math.floor(Math.random() * array.length)];
     }
 
+    // Renderiza toda la malla
     function renderMaterias() {
       contenedor.innerHTML = "";
       let currentAnio = "";
+
       materias.forEach(m => {
-        const visible = puedeMostrarse(m) || aprobadas.includes(m.nombre);
-        const bloqueada = !visible && !aprobadas.includes(m.nombre);
+        const estaAprobada = aprobadas.includes(m.nombre);
+        const visible = puedeMostrarse(m);
+        const bloqueada = !visible && !estaAprobada;
+
+        // Si cambia semestre/año, agrego título
         if (m.anio !== currentAnio) {
           currentAnio = m.anio;
           const titulo = document.createElement("div");
@@ -221,14 +241,19 @@
         }
 
         const div = document.createElement("div");
-        div.className = `materia ${aprobadas.includes(m.nombre) ? "aprobada" : ""} ${bloqueada ? "bloqueada" : ""}`;
+        div.classList.add("materia");
+        if (bloqueada) div.classList.add("bloqueada");
+        else if (estaAprobada) div.classList.add("aprobada");
+        else div.classList.add("disponible");
+
         div.textContent = m.nombre;
+
         if (!bloqueada) {
           div.style.cursor = "pointer";
           div.onclick = () => toggleAprobado(m.nombre);
         }
 
-        if (aprobadas.includes(m.nombre)) {
+        if (estaAprobada) {
           const gatito = document.createElement("span");
           gatito.className = "gatito";
           gatito.title = "¡Lo hiciste bien, mi amor Carlos! 😽";
@@ -240,6 +265,7 @@
       });
     }
 
+    // Marca o desmarca una materia como aprobada
     function toggleAprobado(nombre) {
       const index = aprobadas.indexOf(nombre);
       if (index === -1) {
@@ -253,6 +279,7 @@
       renderMaterias();
     }
 
+    // Inicializa la vista
     renderMaterias();
   </script>
 </body>
