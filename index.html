@@ -1,179 +1,247 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Malla Curricular Interactiva - Karla Cando</title>
-  <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background: #fdfdfd;
-      color: #333;
-      margin: 0;
-      padding: 2rem;
-    }
+<meta charset="UTF-8" />
+<title>Malla Curricular Interactiva - Carlos Morocho</title>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background: #fdfdfd;
+    color: #333;
+    margin: 0;
+    padding: 2rem;
+  }
 
-    h1 {
-      text-align: center;
-      color: #800080; /* Púrpura */
-      margin-bottom: 2rem;
-    }
+  h1 {
+    text-align: center;
+    color: #800080; /* Púrpura */
+    margin-bottom: 2rem;
+  }
 
-    .materia {
-      background: #eee;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      cursor: not-allowed;
-      opacity: 0.5;
-      transition: all 0.3s ease;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .seccion {
+    margin-bottom: 3rem;
+  }
 
-    .materia.activa {
-      background: #E0B0FF; /* Malva */
-      cursor: pointer;
-      opacity: 1;
-    }
+  .seccion h2 {
+    font-size: 1.3rem;
+    color: #808000; /* Verde Olivo */
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+  }
 
-    .materia.aprobada {
-      background: #FFFF99; /* Canario */
-      color: #333;
-      cursor: default;
-    }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(160px,1fr));
+    gap: 1rem;
+  }
 
-    .materia span.estado {
-      font-size: 0.9rem;
-      color: #555;
-    }
+  .materia {
+    background: #eee;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: not-allowed;
+    opacity: 0.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: all 0.3s ease;
+    min-height: 100px;
+    text-align: center;
+    font-weight: 600;
+    color: #555;
+    position: relative;
+  }
 
-    .seccion {
-      margin-bottom: 3rem;
-    }
+  .materia.activa {
+    background: #E0B0FF; /* Malva */
+    opacity: 1;
+    cursor: pointer;
+    color: #333;
+  }
 
-    .seccion h2 {
-      font-size: 1.3rem;
-      color: #808000; /* Verde Olivo */
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
+  .materia.aprobada {
+    background: #FFFF99; /* Canario */
+    opacity: 1;
+    color: #333;
+  }
 
-    .aprobada span.estado::after {
-      content: " ✅";
-    }
-  </style>
+  .materia.aprobada::after {
+    content: "✔";
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.5rem;
+    color: #F9A602; /* Narciso */
+    font-weight: bold;
+  }
+
+  .materia .estado {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #666;
+  }
+</style>
 </head>
 <body>
-  <h1>Malla Curricular Interactiva</h1>
+<h1>Malla Curricular Interactiva</h1>
 
-  <!-- Nivelación -->
-  <div class="seccion" id="nivelacion">
-    <h2>Nivelación (CBC)</h2>
-    <div class="materia activa" data-id="Proyectual1">Proyectual 1 <span class="estado">Pendiente</span></div>
-    <div class="materia" data-id="Proyectual2" data-req="Proyectual1">Proyectual 2 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="Dibujo" data-req="Proyectual1">Dibujo <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="Sociedad" data-req="Proyectual1">Sociedad y Estado <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="Pensamiento" data-req="Proyectual1">Pensamiento Científico <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="Matematica" data-req="Proyectual1">Matemática <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="Semiologia" data-req="Proyectual1">Semiología <span class="estado">Bloqueada</span></div>
+<!-- Nivelación -->
+<div class="seccion" id="nivelacion">
+  <h2>Nivelación (CBC)</h2>
+  <div class="grid">
+    <div class="materia activa" data-id="Proyectual1">Proyectual 1<span class="estado">Pendiente</span></div>
+    <div class="materia" data-id="Proyectual2" data-req="Proyectual1">Proyectual 2<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="Dibujo" data-req="Proyectual1">Dibujo<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="Sociedad" data-req="Proyectual1">Sociedad y Estado<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="Pensamiento" data-req="Proyectual1">Pensamiento Científico<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="Matematica" data-req="Proyectual1">Matemática<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="Semiologia" data-req="Proyectual1">Semiología<span class="estado">Bloqueada</span></div>
   </div>
+</div>
 
-  <!-- Primer Año -->
-  <div class="seccion" id="primer">
-    <h2>Primer Año</h2>
-    <div class="materia" data-id="TDI1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">TDI1 - Taller Diseño Industrial 1 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="M1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">M1 - Morfología 1 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="AP" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">AP - Análisis de Productos <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="T1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">T1 - Tecnología 1 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="MAT1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">MAT1 - Matemática 1 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="F1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">F1 - Física 1 <span class="estado">Bloqueada</span></div>
+<!-- Primer Año -->
+<div class="seccion" id="primer">
+  <h2>Primer Año</h2>
+  <div class="grid">
+    <div class="materia" data-id="TDI1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">TDI1 - Taller Diseño Industrial 1<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="M1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">M1 - Morfología 1<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="AP" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">AP - Análisis de Productos<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="T1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">T1 - Tecnología 1<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="MAT1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">MAT1 - Matemática 1<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="F1" data-req="Proyectual2,Dibujo,Sociedad,Pensamiento,Matematica,Semiologia">F1 - Física 1<span class="estado">Bloqueada</span></div>
   </div>
+</div>
 
-  <!-- Segundo Año -->
-  <div class="seccion" id="segundo">
-    <h2>Segundo Año</h2>
-    <div class="materia" data-id="TDI2" data-req="TDI1,AP,T1">TDI2 - Taller Diseño Industrial 2 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="M2" data-req="TDI1,M1">M2 - Morfología 2 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="T2" data-req="T1,F1">T2 - Tecnología 2 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="Ergo" data-req="AP,TDI1,F1">Ergonomía y Factores Humanos <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="HD1" data-req="Proyectual1">Historia del Diseño Industrial 1 <span class="estado">Bloqueada</span></div>
+<!-- Segundo Año -->
+<div class="seccion" id="segundo">
+  <h2>Segundo Año</h2>
+  <div class="grid">
+    <div class="materia" data-id="TDI2" data-req="TDI1,AP,T1">TDI2 - Taller Diseño Industrial 2<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="M2" data-req="TDI1,M1">M2 - Morfología 2<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="T2" data-req="T1,F1">T2 - Tecnología 2<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="Ergo" data-req="AP,TDI1,F1">Ergonomía y Factores Humanos<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="HD1" data-req="Proyectual1">Historia del Diseño Industrial 1<span class="estado">Bloqueada</span></div>
   </div>
+</div>
 
-  <!-- Tercer Año -->
-  <div class="seccion" id="tercer">
-    <h2>Tercer Año</h2>
-    <div class="materia" data-id="TDI3" data-req="TDI2,M1,T2,Ergo,MAT1,F1">TDI3 - Taller Diseño Industrial 3 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="M3" data-req="TDI2,M2,T1,MAT1,F1">M3 - Morfología 3 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="T3" data-req="TDI1,M1,MAT1,T1,F1,AP,T2">T3 - Tecnología 3 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="F2" data-req="TDI1,M1,MAT1,T1,F1,AP">F2 - Física 2 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="HDI2" data-req="TDI1,M1,T1,AP,HD1,MAT1,F1">Historia del Diseño Industrial 2 <span class="estado">Bloqueada</span></div>
+<!-- Tercer Año -->
+<div class="seccion" id="tercer">
+  <h2>Tercer Año</h2>
+  <div class="grid">
+    <div class="materia" data-id="TDI3" data-req="TDI2,M1,T2,Ergo,MAT1,F1">TDI3 - Taller Diseño Industrial 3<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="M3" data-req="TDI2,M2,T1,MAT1,F1">M3 - Morfología 3<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="T3" data-req="TDI1,M1,MAT1,T1,F1,AP,T2">T3 - Tecnología 3<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="F2" data-req="TDI1,M1,MAT1,T1,F1,AP">F2 - Física 2<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="HDI2" data-req="TDI1,M1,T1,AP,HD1,MAT1,F1">Historia del Diseño Industrial 2<span class="estado">Bloqueada</span></div>
   </div>
+</div>
 
-  <!-- Cuarto Año -->
-  <div class="seccion" id="cuarto">
-    <h2>Cuarto Año</h2>
-    <div class="materia" data-id="TDI4" data-req="TDI3,M2,T3,F2,Ergo,HDI2,T2">TDI4 - Taller Diseño Industrial 4 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="T4" data-req="M2,TDI2,T2,Ergo,T3,F2,HDI1,F2,T3">T4 - Tecnología 4 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="SAD" data-req="TDI2,T2,M2,Ergo,HDI1,HDI2">Sociología aplicada al diseño <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="GI" data-req="TDI2,T2,M2,Ergo,HDI1,HDI2">Gestión Industrial <span class="estado">Bloqueada</span></div>
+<!-- Cuarto Año -->
+<div class="seccion" id="cuarto">
+  <h2>Cuarto Año</h2>
+  <div class="grid">
+    <div class="materia" data-id="TDI4" data-req="TDI3,M2,T3,F2,Ergo,HDI2,T2">TDI4 - Taller Diseño Industrial 4<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="T4" data-req="M2,TDI2,T2,Ergo,T3,F2,HDI1,F2,T3">T4 - Tecnología 4<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="SAD" data-req="TDI2,T2,M2,Ergo,HDI1,HDI2">Sociología aplicada al diseño<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="GI" data-req="TDI2,T2,M2,Ergo,HDI1,HDI2">Gestión Industrial<span class="estado">Bloqueada</span></div>
   </div>
+</div>
 
-  <!-- Quinto Año -->
-  <div class="seccion" id="quinto">
-    <h2>Quinto Año</h2>
-    <div class="materia" data-id="PF" data-req="TDI4,T3,F2,HDI2,M3,T4">Proyecto Final <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="MID" data-req="M2,TDI2,T2,Ergo,T3,F2,HDI1,F2,T3">Metodología <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="GP" data-req="M2,TDI2,T2,Ergo,T3,F2,HDI1,F2,T3">Gestión de Proyecto <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="PPA" data-req="TDI3,T2,M2,Ergo,HDI1,F2,HDI2">PPA <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="LG" data-req="TDI3,T2,M3,Ergo,HDI1,F2,T3,HDI2">Legislación <span class="estado">Bloqueada</span></div>
+<!-- Quinto Año -->
+<div class="seccion" id="quinto">
+  <h2>Quinto Año</h2>
+  <div class="grid">
+    <div class="materia" data-id="PF" data-req="TDI4,T3,F2,HDI2,M3,T4">Proyecto Final<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="MID" data-req="M2,TDI2,T2,Ergo,T3,F2,HDI1,F2,T3">Metodología<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="GP" data-req="M2,TDI2,T2,Ergo,T3,F2,HDI1,F2,T3">Gestión de Proyecto<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="PPA" data-req="TDI3,T2,M2,Ergo,HDI1,F2,HDI2">PPA<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="LG" data-req="TDI3,T2,M3,Ergo,HDI1,F2,T3,HDI2">Legislación<span class="estado">Bloqueada</span></div>
   </div>
+</div>
 
-  <!-- Electivas y Optativas -->
-  <div class="seccion" id="electivas">
-    <h2>Electivas y Optativas</h2>
-    <div class="materia" data-id="DIGA" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Diseño de Interfaces y Gráfica Aplicada a Productos <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="MGE" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Mercadotecnia y Gestión Empresaria <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="AED" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Aspectos Económicos del Diseño <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="DIN" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Diseño e Innovación <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="DS" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Diseño para la Sustentabilidad <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="EU" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Ergonomía y Experiencia de Usuario <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="Opt1" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Optativa 1 <span class="estado">Bloqueada</span></div>
-    <div class="materia" data-id="Opt2" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Optativa 2 <span class="estado">Bloqueada</span></div>
+<!-- Electivas y Optativas -->
+<div class="seccion" id="electivas">
+  <h2>Electivas y Optativas</h2>
+  <div class="grid">
+    <div class="materia" data-id="DIGA" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Diseño de Interfaces y Gráfica Aplicada a Productos<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="MGE" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Mercadotecnia y Gestión Empresaria<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="AED" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Aspectos Económicos del Diseño<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="DIN" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Diseño e Innovación<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="DS" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Diseño para la Sustentabilidad<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="EU" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Ergonomía y Experiencia de Usuario<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="Opt1" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Optativa 1<span class="estado">Bloqueada</span></div>
+    <div class="materia" data-id="Opt2" data-req="TDI3,T2,M2,Ergo,F2,HDI2">Optativa 2<span class="estado">Bloqueada</span></div>
   </div>
+</div>
 
-  <script>
-    const materias = document.querySelectorAll(".materia");
+<script>
+  const materias = document.querySelectorAll(".materia");
 
-    function actualizarEstado() {
-      materias.forEach(m => {
-        if (m.classList.contains("aprobada")) return;
+  // Carga el progreso guardado en localStorage
+  const progresoGuardado = JSON.parse(localStorage.getItem("mallaProgreso")) || {};
 
+  // Actualiza estados segun requisitos y progreso guardado
+  function actualizarEstado() {
+    materias.forEach(m => {
+      const id = m.dataset.id;
+      if(progresoGuardado[id]){
+        m.classList.add("aprobada");
+        m.classList.remove("activa");
+        m.querySelector(".estado").textContent = "Aprobada";
+      } else {
+        // Si no aprobado, verificamos si se puede activar
         const reqs = m.dataset.req ? m.dataset.req.split(",") : [];
         const aprobadas = [...document.querySelectorAll(".materia.aprobada")].map(el => el.dataset.id);
-
         const habilitada = reqs.every(req => aprobadas.includes(req));
 
-        if (habilitada && !m.classList.contains("activa")) {
+        if(habilitada){
           m.classList.add("activa");
+          m.classList.remove("aprobada");
           m.querySelector(".estado").textContent = "Pendiente";
+        } else {
+          m.classList.remove("activa");
+          m.classList.remove("aprobada");
+          m.querySelector(".estado").textContent = "Bloqueada";
         }
-      });
-    }
-
-    materias.forEach(m => {
-      m.addEventListener("click", () => {
-        if (!m.classList.contains("activa") || m.classList.contains("aprobada")) return;
-
-        m.classList.remove("activa");
-        m.classList.add("aprobada");
-        m.querySelector(".estado").textContent = "Aprobada";
-        actualizarEstado();
-      });
+      }
     });
+  }
 
-    actualizarEstado();
-  </script>
+  materias.forEach(m => {
+    m.addEventListener("click", () => {
+      if(!m.classList.contains("activa") && !m.classList.contains("aprobada")) return;
+
+      const id = m.dataset.id;
+
+      if(m.classList.contains("aprobada")){
+        // Desmarcar aprobado
+        m.classList.remove("aprobada");
+        m.classList.add("activa");
+        m.querySelector(".estado").textContent = "Pendiente";
+        delete progresoGuardado[id];
+      } else if(m.classList.contains("activa")){
+        // Marcar aprobado
+        m.classList.add("aprobada");
+        m.classList.remove("activa");
+        m.querySelector(".estado").textContent = "Aprobada";
+        progresoGuardado[id] = true;
+      }
+
+      // Guardar progreso
+      localStorage.setItem("mallaProgreso", JSON.stringify(progresoGuardado));
+
+      // Actualizar para desbloquear materias
+      actualizarEstado();
+    });
+  });
+
+  // Inicializamos
+  actualizarEstado();
+</script>
+
 </body>
 </html>
